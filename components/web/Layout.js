@@ -9,7 +9,7 @@ import Header from "./Header"
 import { useDispatch, useSelector } from "react-redux"
 import { setLang } from "../../redux/langSlice"
 import { useRouter } from "next/router"
-import Mask from "../mask"
+import Mask from "../Mask"
 import { selectMask } from "../../redux/generalSlice"
 
 function Layout({ title, children }) {
@@ -18,7 +18,6 @@ function Layout({ title, children }) {
   const router = useRouter()
   let pageLoading = false
 
-  // Mask
   const maskIsOpen = useSelector(selectMask)
 
   React.useEffect(() => {
