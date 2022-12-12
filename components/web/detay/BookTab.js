@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { useRouter } from "next/router"
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -22,85 +23,82 @@ export default function BookTab() {
 
   const router = useRouter()
 
+  try {
+    setTimeout(() => {
+      $("#calendar")
+        .datepicker({
+          todayHighlight: true,
+          daysOfWeekDisabled: [0],
+          toogleActive: true,
+          beforeShowDay: function (date) {
+            var d = date
+            var curr_date = d.getDate()
+            var curr_month = d.getMonth() + 1 //Months are zero based
+            var curr_year = d.getFullYear()
+            var formattedDate = curr_year + "/" + curr_month + "/" + curr_date
+
+            return formattedDate
+          },
+          // izinli günlerini seçebilir
+          //   daysOfWeekDisabled: [3, 6],
+
+          weekStart: 1,
+          format: {
+            toDisplay: function (date, format, language) {
+              var d = new Date(date)
+              d.setDate(d.getDate() - 7)
+
+              return d.toISOString()
+            },
+            toValue: function (date, format, language) {
+              var d = new Date(date)
+              d.setDate(d.getDate() + 7)
+              /**
+               * türkçe
+               */
+            },
+          },
+          datesDisabled: [
+            "2017/10/20",
+            "2017/11/21",
+            "2017/12/21",
+            "2018/01/21",
+            "2018/02/21",
+            "2018/03/21",
+          ],
+        })
+        .on("changeDate", function (e) {
+          // console.log(e)
+          var d = new Date(e.date)
+
+          // let localData = d.toLocaleString("tr-TR", {
+          //   timeZone: "Europe/Istanbul",
+          //   formatMatcher: "basic",
+          // })
+          const todayDate = new Date(e.date)
+
+          const formatDate =
+            todayDate.getDate() < 10
+              ? `0${todayDate.getDate()}`
+              : todayDate.getDate()
+          const formatMonth =
+            todayDate.getMonth() + 1 < 10
+              ? `0${todayDate.getMonth() + 1}`
+              : todayDate.getMonth() + 1
+          const formattedDate = [
+            todayDate.getFullYear(),
+            formatMonth,
+            formatDate,
+          ].join("-")
+          dispatch(setDate(formattedDate))
+        })
+    }, 1000)
+  } catch (err) {
+    console.log(err)
+  }
+
   React.useEffect(() => {
     dispatch(setDoktorName("Dr. Sezer Bölük"))
-
-    return () => {
-      try {
-        setTimeout(() => {
-          $("#calendar")
-            .datepicker({
-              todayHighlight: true,
-              daysOfWeekDisabled: [0],
-              toogleActive: true,
-              beforeShowDay: function (date) {
-                var d = date
-                var curr_date = d.getDate()
-                var curr_month = d.getMonth() + 1 //Months are zero based
-                var curr_year = d.getFullYear()
-                var formattedDate =
-                  curr_year + "/" + curr_month + "/" + curr_date
-
-                return formattedDate
-              },
-              // izinli günlerini seçebilir
-              //   daysOfWeekDisabled: [3, 6],
-
-              weekStart: 1,
-              format: {
-                toDisplay: function (date, format, language) {
-                  var d = new Date(date)
-                  d.setDate(d.getDate() - 7)
-
-                  return d.toISOString()
-                },
-                toValue: function (date, format, language) {
-                  var d = new Date(date)
-                  d.setDate(d.getDate() + 7)
-                  /**
-                   * türkçe
-                   */
-                },
-              },
-              datesDisabled: [
-                "2017/10/20",
-                "2017/11/21",
-                "2017/12/21",
-                "2018/01/21",
-                "2018/02/21",
-                "2018/03/21",
-              ],
-            })
-            .on("changeDate", function (e) {
-              // console.log(e)
-              var d = new Date(e.date)
-
-              // let localData = d.toLocaleString("tr-TR", {
-              //   timeZone: "Europe/Istanbul",
-              //   formatMatcher: "basic",
-              // })
-              const todayDate = new Date(e.date)
-
-              const formatDate =
-                todayDate.getDate() < 10
-                  ? `0${todayDate.getDate()}`
-                  : todayDate.getDate()
-              const formatMonth =
-                todayDate.getMonth() + 1 < 10
-                  ? `0${todayDate.getMonth() + 1}`
-                  : todayDate.getMonth() + 1
-              const formattedDate = [
-                todayDate.getFullYear(),
-                formatMonth,
-                formatDate,
-              ].join("-")
-              dispatch(setDate(formattedDate))
-            })
-        }, 300)
-      } catch (err) {
-        console.log(err)
-      }
-    }
   }, [router])
 
   const handleBookNow = () => {
@@ -139,8 +137,6 @@ export default function BookTab() {
     dispatch(setMask(true))
   }
 
-  console.log(date, time)
-
   return (
     <div
       className="tab-pane fade show active"
@@ -148,6 +144,9 @@ export default function BookTab() {
       role="tabpanel"
       aria-labelledby="book-tab"
     >
+      <Head>
+        <script src="/assets/js/bootstrap-datepicker.js" async></script>
+      </Head>
       <p className="lead add_bottom_30">
         {
           lang[

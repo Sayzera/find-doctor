@@ -23,24 +23,30 @@ export default function Document() {
       </Head>
       <body>
         <Main />
+
         <NextScript />
 
         <Script
           src="/assets/js/jquery-3.5.1.min.js"
           strategy="beforeInteractive"
+          onLoad={() => {
+            console.log("jquery loaded")
+          }}
         />
+
         <Script
-          src="/assets/js/common_scripts.min.js"
+          src="/assets/js/common_scripts.js"
           strategy="beforeInteractive"
         />
-        <Script src="/assets/js/functions.js" strategy="beforeInteractive" />
 
+        {/* 
+      
         <Script
           src="assets/js/bootstrap-datepicker.js"
           strategy="beforeInteractive"
         />
 
-        <Script src="/assets/js/flowbite.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/flowbite.js" strategy="beforeInteractive" /> */}
       </body>
     </Html>
   )

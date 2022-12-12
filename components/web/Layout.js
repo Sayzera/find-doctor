@@ -22,15 +22,20 @@ function Layout({ title, children, toTop = true }) {
   const maskIsOpen = useSelector(selectMask)
 
   React.useEffect(() => {
-    // unmout
-    if (pageLoading == false) {
-      fileLoader("/assets/js/flowbite.js")
-      fileLoader("/assets/js/common_scripts.js")
-      fileLoader("/assets/js/functions.js")
-      fileLoader("/assets/js/bootstrap-datepicker.js")
-
+    $(document).ready(function () {
       pageLoading = true
-    }
+      setTimeout(() => {
+        pageLoading = false
+      }, 1000)
+
+      if (pageLoading) {
+        $("#preloader").fadeIn("fast")
+      } else {
+        $("#preloader").fadeOut("fast")
+      }
+
+      $("#preloader").fadeOut("fast")
+    })
     dispatch(setLang(lang))
   }, [router])
   return (
@@ -75,10 +80,17 @@ function Layout({ title, children, toTop = true }) {
           sizes="144x144"
           href="img/apple-touch-icon-144x144-precomposed.png"
         />
+        <script src="/assets/js/functions.js"></script>
+        <script src="/assets/js/flowbite.js"></script>
 
         <title>{title} | Project Name</title>
       </Head>
-      <div className="layer"></div>
+
+      <div class="layer"></div>
+
+      <div id="preloader">
+        <div data-loader="circle-side"></div>
+      </div>
       {/* <div id="preloader">
         <div data-loader="circle-side"></div>
       </div> */}

@@ -16,8 +16,12 @@ import ReviewsTab from "../../components/web/detay/ReviewsTab"
 import BookTab from "../../components/web/detay/BookTab"
 import { useDispatch } from "react-redux"
 import ReviewsDrawer from "../../components/drawers/ReviewsDrawer"
+import Head from "next/head"
+import { fileLoader } from "../../helper/utils"
+import { useRouter } from "next/router"
 function DoctorDetail() {
   const lang = useLang()
+  const router = useRouter()
 
   return (
     <>
@@ -165,7 +169,17 @@ function DoctorDetail() {
           {/* /container */}
 
           <div className="fixed bottom-0  h-30 px-2 w-full bg-gray-100 py-2  rounded-md">
-            <div className="flex justify-center space-x-5">
+            <div className="flex justify-center space-x-5 items-center">
+              <button
+                type="button"
+                onClick={() => {
+                  router.push("#book")
+                }}
+                class="text-white bg-gradient-to-r from-[#3F4079] via-pink-500 to-[#3F4079] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg text-sm px-2 py-2.5 text-center mr-2 mb-2"
+              >
+                {lang["Randevu Al"]}
+              </button>
+
               <Popover
                 title={lang["Arama Yap"]}
                 content={
@@ -174,7 +188,7 @@ function DoctorDetail() {
                 id="doktoru-ara"
               />
               <BsTelephone
-                size={40}
+                size={30}
                 data-popover-target="doktoru-ara"
                 className="cursor-pointer"
               />
@@ -190,7 +204,7 @@ function DoctorDetail() {
               />
 
               <BsCameraVideo
-                size={40}
+                size={30}
                 data-popover-target="doktoru-online-ara"
                 className="cursor-pointer"
               />
@@ -205,7 +219,7 @@ function DoctorDetail() {
               />
 
               <TbMessageCircle2
-                size={40}
+                size={30}
                 data-popover-target="doktora-mesaj-at"
                 className="cursor-pointer"
               />
