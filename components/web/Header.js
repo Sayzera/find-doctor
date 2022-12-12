@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic"
 import Link from "next/link"
-import React from "react"
+import React, { useTransition } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { selectLang } from "../../redux/langSlice"
 import { MdLanguage } from "react-icons/md"

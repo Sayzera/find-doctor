@@ -9,25 +9,25 @@ import Header from "./Header"
 import { useDispatch, useSelector } from "react-redux"
 import { setLang } from "../../redux/langSlice"
 import { useRouter } from "next/router"
-import Mask from "../Mask"
+import Mask from "../mask"
 import { selectMask } from "../../redux/generalSlice"
 
-function Layout({ title, children }) {
+function Layout({ title, children, toTop = true }) {
   const lang = useLang()
   const dispatch = useDispatch()
   const router = useRouter()
   let pageLoading = false
 
+  // Mask
   const maskIsOpen = useSelector(selectMask)
 
   React.useEffect(() => {
     // unmout
     if (pageLoading == false) {
       fileLoader("/assets/js/flowbite.js")
-      fileLoader("/assets/js/bootstrap-datepicker.js")
-
       fileLoader("/assets/js/common_scripts.js")
       fileLoader("/assets/js/functions.js")
+      fileLoader("/assets/js/bootstrap-datepicker.js")
 
       pageLoading = true
     }
@@ -88,7 +88,7 @@ function Layout({ title, children }) {
       {children}
       {/* /footer */}
       <Footer />
-      <div id="toTop"></div>
+      {toTop && <div id="toTop"></div>}
     </>
   )
 }

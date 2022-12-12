@@ -95,4 +95,69 @@ export default {
   Ara: "Search",
   Düzen: "Layout",
   "Gelişmiş Sıralama": "Advanced Sorting",
+  Yakınımdakiler: "Closest",
+  "En Çok Oy Alanlar": "Best Rated",
+  "Erkek Doktorlar": "Man Doctors",
+  "Kadın Doktorlar": "Woman Doctors",
+  Düzen: "Layout",
+  "Daha Fazla": "More",
+  "Haritada Göster": "View on map",
+  "Randevu Al": "Book now",
+  Önceki: "Previous",
+  Sonraki: "Next",
+
+  Anasayfa: "Home",
+  Doktorlar: "Doctors",
+  "Genel Cerrahi": "General Surgery",
+  Görüntülenme: "Views",
+  Hasta: "Patient",
+  Adres: "Address",
+  Telefon: "Phone",
+  "Randevu Al": "Book now",
+  "Genel Bilgiler": "General Information",
+  Yorumlar: "Reviews",
+
+  "Canlı Görüşme": "Live Chat",
+  "Hızlı bir şekilde tıklayıp doktorumuzla canlı görüşme yapabilirsiniz":
+    "You can quickly chat with your doctor by clicking",
+
+  "Mesaj Gönder": "Send Message",
+
+  "Hızlı bir şekilde tıklayıp doktorumuza mesaj gönderebilirsiniz":
+    "You can quickly send a message to your doctor by clicking",
+
+  "Arama Yap": "Call",
+
+  "Hızlı bir şekilde tıklayıp doktorumuza ulaşabilirsiniz":
+    "You can quickly reach your doctor by clicking",
+
+  "Doktorumuzun uygun olan saat ve tarihlerine aşağıdan bakıp randevu alabilirsiniz. Size ve Ailenize sağlıklı günler dileriz":
+    "You can check the available hours and dates of our doctor below and book an appointment. We wish you and your family healthy days",
+
+  "Tarih Seçiniz": "Select Date",
+  Uygun: "Available",
+  "Uygun Değil": "Not Available",
+  "Zaman Seçiniz": "Select Your Time",
+  Değerlendirme: "Rating",
+  Yıldız: "Stars",
+
+  "Yorum Yap": "Write a Review",
+  "Randevu Tarihi": "Appointment Date",
+  "Randevu Saati": "Appointment Time",
+  "Randevu Notu": "Appointment Note",
+
+  "Randevuyu Onayla": "Confirm Appointment",
+
+  "Randevunuz başarıyla oluşturuldu. Size en kısa sürede geri dönüş yapılacaktır . Teşekkür eder sağlıklı günler dileriz":
+    "Your appointment has been successfully created. You will be contacted as soon as possible. Thank you, have a healthy day",
+  "Lütfen tarih ve saat seçiniz": "Please select a date and time",
+  "Lütfen tarih seçiniz": "Please select a date",
+  "Lütfen saat seçiniz": "Please select a time",
+
+  Yorumunuz: "Your Review",
+  "Yorumu Gönder": "Send Review",
+
+  "Yorumunuz başarıyla gönderildi. Teşekkür ederiz":
+    "Your comment has been successfully sent. Thank you",
+  "Genel Değerlendirme": "General Evaluation",
 }

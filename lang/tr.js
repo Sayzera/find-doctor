@@ -100,4 +100,73 @@ export default {
   Ara: "Ara",
   Düzen: "Düzen",
   "Gelişmiş Sıralama": "Gelişmiş Sıralama",
+  Yakınımdakiler: "Yakınımdakiler",
+  "En Çok Oy Alanlar": "En Çok Oy Alanlar",
+  "Erkek Doktorlar": "Erkek Doktorlar",
+  "Kadın Doktorlar": "Kadın Doktorlar",
+  Düzen: "Düzen",
+  "Daha Fazla": "Daha Fazla",
+  "Haritada Göster": "Haritada Göster",
+  "Randevu Al": "Randevu Al",
+  Önceki: "Önceki",
+  Sonraki: "Sonraki",
+
+  Anasayfa: "Anasayfa",
+  Doktorlar: "Doktorlar",
+  "Genel Cerrahi": "Genel Cerrahi",
+  Görüntülenme: "Görüntülenme",
+  Hasta: "Hasta",
+  Adres: "Adres",
+  Telefon: "Telefon",
+
+  "Randevu Al": "Randevu Al",
+  "Genel Bilgiler": "Genel Bilgiler",
+  Yorumlar: "Yorumlar",
+
+  "Canlı Görüşme": "Canlı Görüşme",
+  "Hızlı bir şekilde tıklayıp doktorumuzla canlı görüşme yapabilirsiniz":
+    "Hızlı bir şekilde tıklayıp doktorumuzla canlı görüşme yapabilirsiniz",
+
+  "Mesaj Gönder": "Mesaj Gönder",
+
+  "Hızlı bir şekilde tıklayıp doktorumuza mesaj gönderebilirsiniz":
+    "Hızlı bir şekilde tıklayıp doktorumuza mesaj gönderebilirsiniz",
+
+  "Arama Yap": "Arama Yap",
+
+  "Hızlı bir şekilde tıklayıp doktorumuza ulaşabilirsiniz":
+    "Hızlı bir şekilde tıklayıp doktorumuza  ulaşabilirsiniz",
+
+  "Doktorumuzun uygun olan saat ve tarihlerine aşağıdan bakıp randevu alabilirsiniz. Size ve Ailenize sağlıklı günler dileriz":
+    "Doktorumuzun uygun olan saat ve tarihlerine aşağıdan bakıp randevu alabilirsiniz. Size ve Ailenize sağlıklı günler dileriz",
+
+  "Tarih Seçiniz": "Tarih Seçiniz",
+  Uygun: "Uygun",
+  "Uygun Değil": "Uygun Değil",
+  "Zaman Seçiniz": "Saat Seçiniz",
+  Değerlendirme: "Yorum",
+  Yıldız: "Yıldız",
+  "Yorum Yap": "Yorum Yap",
+
+  "Randevu Tarihi": "Randevu Tarihi",
+  "Randevu Saati": "Randevu Saati",
+  "Randevu Notu": "Randevu Notu",
+
+  "Randevuyu Onayla": "Randevuyu Onayla",
+
+  "Randevunuz başarıyla oluşturuldu. Size en kısa sürede geri dönüş yapılacaktır . Teşekkür eder sağlıklı günler dileriz":
+    "Randevunuz başarıyla oluşturuldu. Size en kısa sürede geri dönüş yapılacaktır . Teşekkür eder sağlıklı günler dileriz",
+
+  "Lütfen tarih ve saat seçiniz": "Lütfen tarih ve saat seçiniz",
+
+  "Lütfen tarih seçiniz": "Lütfen tarih seçiniz",
+
+  "Lütfen saat seçiniz": "Lütfen saat seçiniz",
+
+  Yorumunuz: "Yorumunuz",
+
+  "Yorumu Gönder": "Yorumu Gönder",
+  "Yorumunuz başarıyla gönderildi. Teşekkür ederiz":
+    "Yorum başarıyla gönderildi. Teşekkür ederiz",
+  "Genel Değerlendirme": "Genel Değerlendirme",
 }

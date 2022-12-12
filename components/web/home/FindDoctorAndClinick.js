@@ -1,3 +1,4 @@
+import Link from "next/link"
 import React from "react"
 import useLang from "../../../hook/lang"
 import Popover from "../../popover/Popover"
@@ -26,7 +27,7 @@ export default function FindDoctorAndClinick() {
               </div>
               <ul>
                 <li data-popover-target="popover-istanbul">
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <Popover
                       title={"İSTANBUL"}
                       content={
@@ -39,10 +40,10 @@ export default function FindDoctorAndClinick() {
                     />
                     <strong>160</strong>
                     İSTANBUL
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#0" data-popover-target="popover-ANKARA">
+                  <Link href="/doktorlar" data-popover-target="popover-ANKARA">
                     <Popover
                       title={"ANKARA"}
                       content={
@@ -51,7 +52,7 @@ export default function FindDoctorAndClinick() {
                       id="popover-ANKARA"
                     />
                     <strong>150</strong>ANKARA
-                  </a>
+                  </Link>
                 </li>
                 <li data-popover-target="popover-BURSA">
                   <Popover
@@ -61,9 +62,9 @@ export default function FindDoctorAndClinick() {
                     }
                     id="popover-BURSA"
                   />
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>140</strong>BURSA
-                  </a>
+                  </Link>
                 </li>
                 <li data-popover-target="popover-İZMİR">
                   <Popover
@@ -73,9 +74,9 @@ export default function FindDoctorAndClinick() {
                     }
                     id="popover-İZMİR"
                   />
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>130</strong>İZMİR
-                  </a>
+                  </Link>
                 </li>
                 <li data-popover-target="popover-ADANA">
                   <Popover
@@ -85,9 +86,9 @@ export default function FindDoctorAndClinick() {
                     }
                     id="popover-ADANA"
                   />
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>120</strong>ADANA
-                  </a>
+                  </Link>
                 </li>
                 <li data-popover-target="popover-ADIYAMAN">
                   <Popover
@@ -97,9 +98,9 @@ export default function FindDoctorAndClinick() {
                     }
                     id="popover-ADIYAMAN"
                   />
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>110</strong>ADIYAMAN
-                  </a>
+                  </Link>
                 </li>
                 <li data-popover-target="popover-AFYONKARAHİSAR">
                   <Popover
@@ -112,9 +113,9 @@ export default function FindDoctorAndClinick() {
                     }
                     id="popover-AFYONKARAHİSAR"
                   />
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>90</strong>AFYONKARAHİSAR
-                  </a>
+                  </Link>
                 </li>
                 <li data-popover-target="popover-AĞRI">
                   <Popover
@@ -124,9 +125,9 @@ export default function FindDoctorAndClinick() {
                     }
                     id="popover-AĞRI"
                   />
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>85</strong>AĞRI
-                  </a>
+                  </Link>
                 </li>
                 <li data-popover-target="popover-AKSARAY">
                   <Popover
@@ -136,12 +137,12 @@ export default function FindDoctorAndClinick() {
                     }
                     id="popover-AKSARAY"
                   />
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>70</strong>AKSARAY
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#0">{lang["Daha Fazla..."]}</a>
+                  <Link href="/doktorlar">{lang["Daha Fazla..."]}</Link>
                 </li>
               </ul>
             </div>
@@ -154,61 +155,61 @@ export default function FindDoctorAndClinick() {
               </div>
               <ul>
                 <li>
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>128</strong>
                     {lang["Beyin ve Sinir Cerrahisi"]}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>86</strong>
                     {lang["Çocuk Diş Hekimliği"]}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>74</strong>
                     {lang["Çocuk Sağlığı ve Hastalıkları"]}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>72</strong>
                     {lang["Deri ve Zührevi Hastalıkları (Cildiye)"]}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>56</strong>
                     {lang["Diş Hekimliği (Genel Diş)"]}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>55</strong>
                     {lang["Endodonti"]}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>52</strong>
                     {lang["Enfeksiyon Hastalıkları ve Klinik Mikrobiyoloji"]}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>50</strong>
                     {lang["Fiziksel Tıp ve Rehabilitasyon"]}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#0">
+                  <Link href="/doktorlar">
                     <strong>45</strong>
                     {lang["Genel Cerrahi"]}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#0">{lang["Daha Fazla..."]}</a>
+                  <Link href="/doktorlar">{lang["Daha Fazla..."]}</Link>
                 </li>
               </ul>
             </div>

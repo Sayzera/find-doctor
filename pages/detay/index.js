@@ -1,74 +1,40 @@
 import dynamic from "next/dynamic"
+import { BsTelephone } from "react-icons/bs"
+import { BsCameraVideo } from "react-icons/bs"
+import { TbMessageCircle2 } from "react-icons/tb"
 
 import React from "react"
-import DrawerModal from "../../components/modal/drawer"
 import Layout from "../../components/web/Layout"
+import useLang from "../../hook/lang"
+import Popover from "../../components/popover/Popover"
 
+import badge from "../../public/assets/img/badges/badge_1.svg"
+import Image from "next/image"
+import BookNowDrawer from "../../components/drawers/BookNowDrawer"
+import GeneralTab from "../../components/web/detay/GeneralTab"
+import ReviewsTab from "../../components/web/detay/ReviewsTab"
+import BookTab from "../../components/web/detay/BookTab"
+import { useDispatch } from "react-redux"
+import ReviewsDrawer from "../../components/drawers/ReviewsDrawer"
 function DoctorDetail() {
-  React.useEffect(() => {
-    $("#calendar")
-      .datepicker({
-        todayHighlight: true,
-        daysOfWeekDisabled: [0],
-        toogleActive: true,
-        beforeShowDay: function (date) {
-          var d = date
-          var curr_date = d.getDate()
-          var curr_month = d.getMonth() + 1 //Months are zero based
-          var curr_year = d.getFullYear()
-          var formattedDate = curr_year + "/" + curr_month + "/" + curr_date
+  const lang = useLang()
 
-          return formattedDate
-        },
-        // izinli günlerini seçebilir
-        //   daysOfWeekDisabled: [3, 6],
-
-        weekStart: 1,
-        format: {
-          toDisplay: function (date, format, language) {
-            var d = new Date(date)
-            d.setDate(d.getDate() - 7)
-            // Tıkladığında alınan değer
-            console.log(d.toISOString())
-            return d.toISOString()
-          },
-          toValue: function (date, format, language) {
-            var d = new Date(date)
-            d.setDate(d.getDate() + 7)
-            /**
-             * türkçe
-             */
-          },
-        },
-        datesDisabled: [
-          "2017/10/20",
-          "2017/11/21",
-          "2017/12/21",
-          "2018/01/21",
-          "2018/02/21",
-          "2018/03/21",
-        ],
-      })
-      .on("changeDate", function (e) {
-        console.log(e)
-      })
-  }, [])
   return (
     <>
-      <Layout>
-        <DrawerModal />
-
+      <BookNowDrawer />
+      <ReviewsDrawer />
+      <Layout toTop={false}>
         <main>
-          <div id="breadcrumb">
+          <div id="breadcrumb" className="relative">
             <div className="container">
               <ul>
                 <li>
-                  <a href="#">Home</a>
+                  <a href="#">{lang["Anasayfa"]}</a>
                 </li>
                 <li>
-                  <a href="#">Category</a>
+                  <a href="#">{lang["Doktorlar"]}</a>
                 </li>
-                <li>Page active</li>
+                <li>Sezer Bölük</li>
               </ul>
             </div>
           </div>
@@ -85,8 +51,8 @@ function DoctorDetail() {
                       className="img-fluid"
                     />
                   </figure>
-                  <small>Primary care - Internist</small>
-                  <h1>DR. Julia Jhones</h1>
+                  <small>{lang["Genel Cerrahi"]}</small>
+                  <h1>Dr. Sezer Bölük</h1>
                   <span className="rating">
                     <i className="icon_star voted"></i>
                     <i className="icon_star voted"></i>
@@ -101,25 +67,26 @@ function DoctorDetail() {
                       data-original-title="Badge Level"
                       className="badge_list_1"
                     >
-                      <img
-                        src="img/badges/badge_1.svg"
-                        width="15"
-                        height="15"
-                        alt=""
-                      />
+                      <div className="flex items-center space-x-3">
+                        <Image src={badge} alt="badge" width={15} height={15} />
+                        &nbsp;5&nbsp;
+                        {lang["Değerlendirme"]}
+                      </div>
                     </a>
                   </span>
                   <ul className="statistic">
-                    <li>854 Views</li>
-                    <li>124 Patients</li>
+                    <li>854 {lang["Görüntülenme"]} </li>
+                    <li className="ml-1">124 {lang["Hasta"]}</li>
                   </ul>
                   <ul className="contacts">
                     <li>
-                      <h6>Address</h6>859 60th, Brooklyn, NY, 11220
+                      <h6>{lang["Adres"]}</h6>
+                      Teknopark Ankara İvedik OSB Mh. 2224 Cad. No:1/203 C Bl.
+                      K:8 D:814-815-816 Yenimahalle / ANKARA
                     </li>
                     <li>
-                      <h6>Phone</h6>
-                      <a href="tel://000434323342">+00043 4323342</a>
+                      <h6>{lang["Telefon"]}</h6>
+                      <a href="tel://000434323342">0(312) 284 85 90</a>
                     </li>
                   </ul>
                   <div className="text-center">
@@ -128,7 +95,7 @@ function DoctorDetail() {
                       className="btn_1 outline"
                       target="_blank"
                     >
-                      <i className="icon_pin"></i> View on map
+                      <i className="icon_pin"></i> {lang["Haritada Göster"]}
                     </a>
                   </div>
                 </div>
@@ -147,7 +114,7 @@ function DoctorDetail() {
                         role="tab"
                         aria-controls="book"
                       >
-                        Book an appointment
+                        {lang["Randevu Al"]}
                       </a>
                     </li>
                     <li className="nav-item">
@@ -160,7 +127,7 @@ function DoctorDetail() {
                         aria-controls="general"
                         aria-expanded="true"
                       >
-                        General info
+                        {lang["Genel Bilgiler"]}
                       </a>
                     </li>
                     <li className="nav-item">
@@ -172,665 +139,19 @@ function DoctorDetail() {
                         role="tab"
                         aria-controls="reviews"
                       >
-                        Reviews
+                        {lang["Yorumlar"]}
                       </a>
                     </li>
                   </ul>
                   {/*/nav-tabs */}
 
                   <div className="tab-content">
-                    <div
-                      className="tab-pane fade show active"
-                      id="book"
-                      role="tabpanel"
-                      aria-labelledby="book-tab"
-                    >
-                      <p className="lead add_bottom_30">
-                        Sed pretium, ligula sollicitudin laoreet viverra, tortor
-                        libero sodales leo, eget blandit nunc tortor eu nibh.
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit.
-                      </p>
-                      <form>
-                        <div className="main_title_3">
-                          <h3>
-                            <strong>1</strong>Select your date
-                          </h3>
-                        </div>
-                        <div className="form-group add_bottom_45">
-                          <div id="calendar"></div>
-                          <input type="hidden" id="my_hidden_input" />
-                          <ul className="legend">
-                            <li>
-                              <strong></strong>Available
-                            </li>
-                            <li>
-                              <strong></strong>Not available
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="main_title_3">
-                          <h3>
-                            <strong>2</strong>Select your time
-                          </h3>
-                        </div>
-                        <div className="row justify-content-center add_bottom_45">
-                          <div className="col-md-3 col-6 text-center">
-                            <ul className="time_select">
-                              <li>
-                                <input
-                                  type="radio"
-                                  id="radio1"
-                                  name="radio_time"
-                                  value="09.30am"
-                                />
-                                <label htmlFor="radio1">09.30am</label>
-                              </li>
-                              <li>
-                                <input
-                                  type="radio"
-                                  id="radio2"
-                                  name="radio_time"
-                                  value="10.00am"
-                                />
-                                <label htmlFor="radio2">10.00am</label>
-                              </li>
-                              <li>
-                                <input
-                                  type="radio"
-                                  id="radio3"
-                                  name="radio_time"
-                                  value="10.30am"
-                                />
-                                <label htmlFor="radio3">10.30am</label>
-                              </li>
-                              <li>
-                                <input
-                                  type="radio"
-                                  id="radio4"
-                                  name="radio_time"
-                                  value="11.00am"
-                                />
-                                <label htmlFor="radio4">11.00am</label>
-                              </li>
-                              <li>
-                                <input
-                                  type="radio"
-                                  id="radio5"
-                                  name="radio_time"
-                                  value="11.30am"
-                                />
-                                <label htmlFor="radio5">11.30am</label>
-                              </li>
-                              <li>
-                                <input
-                                  type="radio"
-                                  id="radio6"
-                                  name="radio_time"
-                                  value="12.00am"
-                                />
-                                <label htmlFor="radio6">12.00am</label>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="col-md-3 col-6 text-center">
-                            <ul className="time_select">
-                              <li>
-                                <input
-                                  type="radio"
-                                  id="radio7"
-                                  name="radio_time"
-                                  value="01.30pm"
-                                />
-                                <label htmlFor="radio7">01.30pm</label>
-                              </li>
-                              <li>
-                                <input
-                                  type="radio"
-                                  id="radio8"
-                                  name="radio_time"
-                                  value="02.00pm"
-                                />
-                                <label htmlFor="radio8">02.00pm</label>
-                              </li>
-                              <li>
-                                <input
-                                  type="radio"
-                                  id="radio9"
-                                  name="radio_time"
-                                  value="02.30pm"
-                                />
-                                <label htmlFor="radio9">02.30pm</label>
-                              </li>
-                              <li>
-                                <input
-                                  type="radio"
-                                  id="radio10"
-                                  name="radio_time"
-                                  value="03.00pm"
-                                />
-                                <label htmlFor="radio10">03.00pm</label>
-                              </li>
-                              <li>
-                                <input
-                                  type="radio"
-                                  id="radio11"
-                                  name="radio_time"
-                                  value="03.30pm"
-                                />
-                                <label htmlFor="radio11">03.30pm</label>
-                              </li>
-                              <li>
-                                <input
-                                  type="radio"
-                                  id="radio12"
-                                  name="radio_time"
-                                  value="04.00pm"
-                                />
-                                <label htmlFor="radio12">04.00pm</label>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        {/* /row */}
-
-                        <div className="main_title_3">
-                          <h3>
-                            <strong>3</strong>Select visit
-                          </h3>
-                        </div>
-                        <ul className="treatments clearfix">
-                          <li>
-                            <div className="checkbox">
-                              <input
-                                type="checkbox"
-                                className="css-checkbox"
-                                id="visit1"
-                                name="visit1"
-                              />
-                              <label htmlFor="visit1" className="css-label">
-                                Back Pain visit <strong>$55</strong>
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="checkbox">
-                              <input
-                                type="checkbox"
-                                className="css-checkbox"
-                                id="visit2"
-                                name="visit2"
-                              />
-                              <label htmlFor="visit2" className="css-label">
-                                Cardiovascular screen <strong>$55</strong>
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="checkbox">
-                              <input
-                                type="checkbox"
-                                className="css-checkbox"
-                                id="visit3"
-                                name="visit3"
-                              />
-                              <label htmlFor="visit3" className="css-label">
-                                Diabetes consultation <strong>$55</strong>
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="checkbox">
-                              <input
-                                type="checkbox"
-                                className="css-checkbox"
-                                id="visit4"
-                                name="visit4"
-                              />
-                              <label htmlFor="visit4" className="css-label">
-                                Icontinence visit <strong>$55</strong>
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="checkbox">
-                              <input
-                                type="checkbox"
-                                className="css-checkbox"
-                                id="visit5"
-                                name="visit5"
-                              />
-                              <label htmlFor="visit5" className="css-label">
-                                Foot Pain visit <strong>$55</strong>
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="checkbox">
-                              <input
-                                type="checkbox"
-                                className="css-checkbox"
-                                id="visit6"
-                                name="visit6"
-                              />
-                              <label htmlFor="visit6" className="css-label">
-                                Food intollerance visit <strong>$55</strong>
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="checkbox">
-                              <input
-                                type="checkbox"
-                                className="css-checkbox"
-                                id="visit7"
-                                name="visit7"
-                              />
-                              <label htmlFor="visit7" className="css-label">
-                                Neck Pain visit <strong>$55</strong>
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="checkbox">
-                              <input
-                                type="checkbox"
-                                className="css-checkbox"
-                                id="visit8"
-                                name="visit8"
-                              />
-                              <label htmlFor="visit8" className="css-label">
-                                Back Pain visit <strong>$55</strong>
-                              </label>
-                            </div>
-                          </li>
-                        </ul>
-                      </form>
-                      <hr />
-                      <p className="text-center">
-                        <a href="booking-page.html" className="btn_1 medium">
-                          Book Now
-                        </a>
-                      </p>
-                    </div>
-                    {/* /tab_1 */}
-
-                    <div
-                      className="tab-pane fade"
-                      id="general"
-                      role="tabpanel"
-                      aria-labelledby="general-tab"
-                    >
-                      <p className="lead add_bottom_30">
-                        Sed pretium, ligula sollicitudin laoreet viverra, tortor
-                        libero sodales leo, eget blandit nunc tortor eu nibh.
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit.
-                      </p>
-                      <div className="indent_title_in">
-                        <i className="pe-7s-user"></i>
-                        <h3>Professional statement</h3>
-                        <p>Mussum ipsum cacilds, vidis litro abertis.</p>
-                      </div>
-                      <div className="wrapper_indent">
-                        <p>
-                          Sed pretium, ligula sollicitudin laoreet viverra,
-                          tortor libero sodales leo, eget blandit nunc tortor eu
-                          nibh. Lorem ipsum dolor sit amet, consectetuer
-                          adipiscing elit. Phasellus hendrerit. Pellentesque
-                          aliquet nibh nec urna. In nisi neque, aliquet vel,
-                          dapibus id, mattis vel, nisi. Nullam mollis. Phasellus
-                          hendrerit. Pellentesque aliquet nibh nec urna. In nisi
-                          neque, aliquet vel, dapi.
-                        </p>
-                        <h6>Specializations</h6>
-                        <div className="row">
-                          <div className="col-lg-6">
-                            <ul className="bullets">
-                              <li>Abdominal Radiology</li>
-                              <li>Addiction Psychiatry</li>
-                              <li>Adolescent Medicine</li>
-                              <li>Cardiothoracic Radiology </li>
-                            </ul>
-                          </div>
-                          <div className="col-lg-6">
-                            <ul className="bullets">
-                              <li>Abdominal Radiology</li>
-                              <li>Addiction Psychiatry</li>
-                              <li>Adolescent Medicine</li>
-                              <li>Cardiothoracic Radiology </li>
-                            </ul>
-                          </div>
-                        </div>
-                        {/* /row*/}
-                      </div>
-                      {/* /wrapper indent */}
-
-                      <hr />
-
-                      <div className="indent_title_in">
-                        <i className="pe-7s-news-paper"></i>
-                        <h3>Education</h3>
-                        <p>Mussum ipsum cacilds, vidis litro abertis.</p>
-                      </div>
-                      <div className="wrapper_indent">
-                        <p>
-                          Phasellus hendrerit. Pellentesque aliquet nibh nec
-                          urna. In nisi neque, aliquet vel, dapibus id, mattis
-                          vel, nisi. Nullam mollis. Phasellus hendrerit.
-                          Pellentesque aliquet nibh nec urna. In nisi neque,
-                          aliquet vel, dapi.
-                        </p>
-                        <h6>Curriculum</h6>
-                        <ul className="list_edu">
-                          <li>
-                            <strong>New York Medical College</strong> - Doctor
-                            of Medicine
-                          </li>
-                          <li>
-                            <strong>Montefiore Medical Center</strong> -
-                            Residency in Internal Medicine
-                          </li>
-                          <li>
-                            <strong>New York Medical College</strong> - Master
-                            Internal Medicine
-                          </li>
-                        </ul>
-                      </div>
-                      {/*  End wrapper indent */}
-
-                      <hr />
-
-                      <div className="indent_title_in">
-                        <i className="pe-7s-cash"></i>
-                        <h3>Prices &amp; Payments</h3>
-                        <p>Mussum ipsum cacilds, vidis litro abertis.</p>
-                      </div>
-                      <div className="wrapper_indent">
-                        <p>
-                          Zril causae ancillae sit ea. Dicam veritus
-                          mediocritatem sea ex, nec id agam eius. Te pri facete
-                          latine salutandi, scripta mediocrem et sed, cum ne
-                          mundi vulputate. Ne his sint graeco detraxit, posse
-                          exerci volutpat has in.
-                        </p>
-                        <div className="table-responsive">
-                          <table className="table table-striped">
-                            <thead>
-                              <tr>
-                                <th>Service - Visit</th>
-                                <th>Price</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>New patient visit</td>
-                                <td>$34</td>
-                              </tr>
-                              <tr>
-                                <td>General consultation</td>
-                                <td>$60</td>
-                              </tr>
-                              <tr>
-                                <td>Back Pain</td>
-                                <td>$40</td>
-                              </tr>
-                              <tr>
-                                <td>Diabetes Consultation</td>
-                                <td>$55</td>
-                              </tr>
-                              <tr>
-                                <td>Eating disorder</td>
-                                <td>$60</td>
-                              </tr>
-                              <tr>
-                                <td>Foot Pain</td>
-                                <td>$35</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                      {/*  End wrapper_indent */}
-                    </div>
-                    {/* /tab_2 */}
-
-                    <div
-                      className="tab-pane fade"
-                      id="reviews"
-                      role="tabpanel"
-                      aria-labelledby="reviews-tab"
-                    >
-                      <div className="reviews-container">
-                        <div className="row">
-                          <div className="col-lg-3">
-                            <div id="review_summary">
-                              <strong>4.7</strong>
-                              <div className="rating">
-                                <i className="icon_star voted"></i>
-                                <i className="icon_star voted"></i>
-                                <i className="icon_star voted"></i>
-                                <i className="icon_star voted"></i>
-                                <i className="icon_star"></i>
-                              </div>
-                              <small>Based on 4 reviews</small>
-                            </div>
-                          </div>
-                          <div className="col-lg-9">
-                            <div className="row">
-                              <div className="col-lg-10 col-9">
-                                <div className="progress">
-                                  <div
-                                    className="progress-bar"
-                                    role="progressbar"
-                                    style={{
-                                      width: "0%",
-                                    }}
-                                    aria-valuenow="90"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                  ></div>
-                                </div>
-                              </div>
-                              <div className="col-lg-2 col-3">
-                                <small>
-                                  <strong>5 stars</strong>
-                                </small>
-                              </div>
-                            </div>
-                            {/* /row */}
-                            <div className="row">
-                              <div className="col-lg-10 col-9">
-                                <div className="progress">
-                                  <div
-                                    className="progress-bar"
-                                    role="progressbar"
-                                    style={{
-                                      width: "95%",
-                                    }}
-                                    aria-valuenow="95"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                  ></div>
-                                </div>
-                              </div>
-                              <div className="col-lg-2 col-3">
-                                <small>
-                                  <strong>4 stars</strong>
-                                </small>
-                              </div>
-                            </div>
-                            {/* /row */}
-                            <div className="row">
-                              <div className="col-lg-10 col-9">
-                                <div className="progress">
-                                  <div
-                                    className="progress-bar"
-                                    role="progressbar"
-                                    style={{
-                                      width: "60%",
-                                    }}
-                                    aria-valuenow="60"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                  ></div>
-                                </div>
-                              </div>
-                              <div className="col-lg-2 col-3">
-                                <small>
-                                  <strong>3 stars</strong>
-                                </small>
-                              </div>
-                            </div>
-                            {/* /row */}
-                            <div className="row">
-                              <div className="col-lg-10 col-9">
-                                <div className="progress">
-                                  <div
-                                    className="progress-bar"
-                                    role="progressbar"
-                                    style={{
-                                      width: "20%",
-                                    }}
-                                    aria-valuenow="20"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                  ></div>
-                                </div>
-                              </div>
-                              <div className="col-lg-2 col-3">
-                                <small>
-                                  <strong>2 stars</strong>
-                                </small>
-                              </div>
-                            </div>
-                            {/* /row */}
-                            <div className="row">
-                              <div className="col-lg-10 col-9">
-                                <div className="progress">
-                                  <div
-                                    className="progress-bar"
-                                    role="progressbar"
-                                    style={{
-                                      width: "0%",
-                                    }}
-                                    aria-valuenow="0"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                  ></div>
-                                </div>
-                              </div>
-                              <div className="col-lg-2 col-3">
-                                <small>
-                                  <strong>1 stars</strong>
-                                </small>
-                              </div>
-                            </div>
-                            {/* /row */}
-                          </div>
-                        </div>
-                        {/* /row */}
-
-                        <hr />
-
-                        <div className="review-box clearfix">
-                          <figure className="rev-thumb">
-                            <img
-                              src="http://via.placeholder.com/150x150.jpg"
-                              alt=""
-                            />
-                          </figure>
-                          <div className="rev-content">
-                            <div className="rating">
-                              <i className="icon_star voted"></i>
-                              <i className="icon_star voted"></i>
-                              <i className="icon_star voted"></i>
-                              <i className="icon_star voted"></i>
-                              <i className="icon_star"></i>
-                            </div>
-                            <div className="rev-info">
-                              Admin – April 03, 2016:
-                            </div>
-                            <div className="rev-text">
-                              <p>
-                                Sed eget turpis a pede tempor malesuada. Vivamus
-                                quis mi at leo pulvinar hendrerit. Cum sociis
-                                natoque penatibus et magnis dis
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        {/* /review-box */}
-
-                        <div className="review-box clearfix">
-                          <figure className="rev-thumb">
-                            <img
-                              src="http://via.placeholder.com/150x150.jpg"
-                              alt=""
-                            />
-                          </figure>
-                          <div className="rev-content">
-                            <div className="rating">
-                              <i className="icon-star voted"></i>
-                              <i className="icon_star voted"></i>
-                              <i className="icon_star voted"></i>
-                              <i className="icon_star voted"></i>
-                              <i className="icon_star"></i>
-                            </div>
-                            <div className="rev-info">
-                              Ahsan – April 01, 2016
-                            </div>
-                            <div className="rev-text">
-                              <p>
-                                Sed eget turpis a pede tempor malesuada. Vivamus
-                                quis mi at leo pulvinar hendrerit. Cum sociis
-                                natoque penatibus et magnis dis
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        {/* End review-box */}
-
-                        <div className="review-box clearfix">
-                          <figure className="rev-thumb">
-                            <img
-                              src="http://via.placeholder.com/150x150.jpg"
-                              alt=""
-                            />
-                          </figure>
-                          <div className="rev-content">
-                            <div className="rating">
-                              <i className="icon-star voted"></i>
-                              <i className="icon_star voted"></i>
-                              <i className="icon_star voted"></i>
-                              <i className="icon_star voted"></i>
-                              <i className="icon_star"></i>
-                            </div>
-                            <div className="rev-info">
-                              Sara – March 31, 2016
-                            </div>
-                            <div className="rev-text">
-                              <p>
-                                Sed eget turpis a pede tempor malesuada. Vivamus
-                                quis mi at leo pulvinar hendrerit. Cum sociis
-                                natoque penatibus et magnis dis
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        {/* End review-box */}
-                        <hr />
-                        <div className="text-right">
-                          <a
-                            href="submit-review.html"
-                            className="btn_1 add_bottom_15"
-                          >
-                            Submit review
-                          </a>
-                        </div>
-                      </div>
-                      {/* End review-container */}
-                    </div>
+                    {/* Tab - 1 */}
+                    <BookTab />
+                    {/* Tab - 2 */}
+                    <GeneralTab />
+                    {/* Tab -3 */}
+                    <ReviewsTab />
                     {/* /tab_3 */}
                   </div>
                   {/* /tab-content */}
@@ -842,6 +163,54 @@ function DoctorDetail() {
             {/* /row */}
           </div>
           {/* /container */}
+
+          <div className="fixed bottom-0  h-30 px-2 w-full bg-gray-100 py-2  rounded-md">
+            <div className="flex justify-center space-x-5">
+              <Popover
+                title={lang["Arama Yap"]}
+                content={
+                  "Hızlı bir şekilde tıklayıp doktorumuza ulaşabilirsiniz"
+                }
+                id="doktoru-ara"
+              />
+              <BsTelephone
+                size={40}
+                data-popover-target="doktoru-ara"
+                className="cursor-pointer"
+              />
+
+              <Popover
+                title={lang["Canlı Görüşme"]}
+                content={
+                  lang[
+                    "Hızlı bir şekilde tıklayıp doktorumuzla canlı görüşme yapabilirsiniz"
+                  ]
+                }
+                id="doktoru-online-ara"
+              />
+
+              <BsCameraVideo
+                size={40}
+                data-popover-target="doktoru-online-ara"
+                className="cursor-pointer"
+              />
+              <Popover
+                title={lang["Mesaj Gönder"]}
+                content={
+                  lang[
+                    "Hızlı bir şekilde tıklayıp doktorumuza mesaj gönderebilirsiniz"
+                  ]
+                }
+                id="doktora-mesaj-at"
+              />
+
+              <TbMessageCircle2
+                size={40}
+                data-popover-target="doktora-mesaj-at"
+                className="cursor-pointer"
+              />
+            </div>
+          </div>
         </main>
       </Layout>
     </>

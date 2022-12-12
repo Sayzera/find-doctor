@@ -1,6 +1,7 @@
 import React from "react"
 import { selectLang } from "../../../redux/langSlice"
 import { useSelector } from "react-redux"
+import Link from "next/link"
 export default function Properties() {
   const lang = useSelector(selectLang)
   return (
@@ -54,9 +55,9 @@ export default function Properties() {
         </div>
         {/*  /row  */}
         <p className="text-center">
-          <a href="list.html" className="btn_1 medium">
+          <Link href={"/doktorlar"} className="btn_1 medium">
             {lang["Doktoru Bul"]}
-          </a>
+          </Link>
         </p>
       </div>
     </div>

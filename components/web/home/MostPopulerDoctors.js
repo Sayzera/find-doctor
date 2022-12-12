@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic"
+import Link from "next/link"
 import React from "react"
 import { useSelector } from "react-redux"
 import { selectLang } from "../../../redux/langSlice"
@@ -21,7 +22,7 @@ function MostPopulerDoctors() {
           </div>
           <div id="reccomended" className="owl-carousel owl-theme">
             <div className="item">
-              <a href="detail-page.html">
+              <Link href="/detay">
                 <div className="views">
                   <i className="icon-eye-7"></i>140
                 </div>
@@ -31,10 +32,10 @@ function MostPopulerDoctors() {
                   </h4>
                 </div>
                 <img src="http://via.placeholder.com/350x500.jpg" alt="" />
-              </a>
+              </Link>
             </div>
             <div className="item">
-              <a href="detail-page.html">
+              <Link href="/detay">
                 <div className="views">
                   <i className="icon-eye-7"></i>120
                 </div>
@@ -44,10 +45,10 @@ function MostPopulerDoctors() {
                   </h4>
                 </div>
                 <img src="http://via.placeholder.com/350x500.jpg" alt="" />
-              </a>
+              </Link>
             </div>
             <div className="item">
-              <a href="detail-page.html">
+              <Link href="/detay">
                 <div className="views">
                   <i className="icon-eye-7"></i>115
                 </div>
@@ -57,10 +58,10 @@ function MostPopulerDoctors() {
                   </h4>
                 </div>
                 <img src="http://via.placeholder.com/350x500.jpg" alt="" />
-              </a>
+              </Link>
             </div>
             <div className="item">
-              <a href="detail-page.html">
+              <Link href="/detay">
                 <div className="views">
                   <i className="icon-eye-7"></i>98
                 </div>
@@ -70,10 +71,10 @@ function MostPopulerDoctors() {
                   </h4>
                 </div>
                 <img src="http://via.placeholder.com/350x500.jpg" alt="" />
-              </a>
+              </Link>
             </div>
             <div className="item">
-              <a href="detail-page.html">
+              <Link href="/detay">
                 <div className="views">
                   <i className="icon-eye-7"></i>98
                 </div>
@@ -83,7 +84,7 @@ function MostPopulerDoctors() {
                   </h4>
                 </div>
                 <img src="http://via.placeholder.com/350x500.jpg" alt="" />
-              </a>
+              </Link>
             </div>
           </div>
           {/*  /carousel  */}
