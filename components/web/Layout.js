@@ -16,26 +16,18 @@ function Layout({ title, children, toTop = true }) {
   const lang = useLang()
   const dispatch = useDispatch()
   const router = useRouter()
-  let pageLoading = false
 
   // Mask
   const maskIsOpen = useSelector(selectMask)
 
   React.useEffect(() => {
-    $(document).ready(function () {
-      pageLoading = true
-      setTimeout(() => {
-        pageLoading = false
-      }, 1000)
-
-      if (pageLoading) {
-        $("#preloader").fadeIn("fast")
-      } else {
-        $("#preloader").fadeOut("fast")
-      }
-
-      $("#preloader").fadeOut("fast")
-    })
+    /**
+     * @description
+     * 1. fileLoader fonksiyonu ile js dosyalarını yükler
+     * 2. setLang fonksiyonu ile dil seçimi yapılır
+     */
+    fileLoader("/assets/js/flowbite.js")
+    fileLoader("/assets/js/functions.js")
     dispatch(setLang(lang))
   }, [router])
   return (
@@ -88,9 +80,9 @@ function Layout({ title, children, toTop = true }) {
 
       <div class="layer"></div>
 
-      <div id="preloader">
+      {/* <div id="preloader">
         <div data-loader="circle-side"></div>
-      </div>
+      </div> */}
       {/* <div id="preloader">
         <div data-loader="circle-side"></div>
       </div> */}
