@@ -72,8 +72,6 @@ function Layout({ title, children, toTop = true }) {
           sizes="144x144"
           href="img/apple-touch-icon-144x144-precomposed.png"
         />
-        <script src="/assets/js/functions.js"></script>
-        <script src="/assets/js/flowbite.js"></script>
 
         <title>{title} | Project Name</title>
       </Head>
