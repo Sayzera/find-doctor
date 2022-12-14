@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+button:focus {
+/* focus olduğunda kenarları kaldır */
+        outline: none;
+}
+
+input:focus {
+        outline: none !important;
+}
+
+
+
+::-webkit-scrollbar {
+        width: 5px;
+        height: 4px;
+        cursor: default;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #c7c7c7;
+      }
+
+      .p-toast-top-right {
+        --toast-indent: 20px;
+        top: 76px;
+        right: 20px;
+    }
+      
