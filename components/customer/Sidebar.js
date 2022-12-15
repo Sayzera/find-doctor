@@ -69,9 +69,8 @@ export default function Sidebar({ sidebarRef }) {
                 </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  target="_blank"
+                <Link
+                  href="/kullanici/doktorlar"
                   className="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-700 flex items-center p-2 group "
                 >
                   <FaHospitalUser className="w-6 h-6 text-white flex-shrink-0 group-hover:text-gray-900 transition duration-75" />
@@ -81,7 +80,7 @@ export default function Sidebar({ sidebarRef }) {
                   <span className="bg-gray-200 text-gray-800 ml-3 text-sm font-medium inline-flex items-center justify-center px-2 rounded-full">
                     3
                   </span>
-                </a>
+                </Link>
               </li>
 
               <li>
